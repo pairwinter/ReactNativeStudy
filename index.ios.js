@@ -4,50 +4,34 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
+    AppRegistry,
+    Navigator,
+    NavigatorIOS
 } from 'react-native';
 
+import MyScene from './components/my.scene'
+
+import ViewText from './components/my.view.text'
+
+import RNDemoList from './components/demo.list'
+
 export default class ReactNativeStudy extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
-    );
-  }
+    render() {
+        return (
+            <NavigatorIOS
+                initialRoute={{title: 'Demos List', component: RNDemoList}}
+                style={{flex: 1}}
+                barTintColor='#C8FDFF'
+                renderScene={(route, navigator) => {
+                    let RouteComponent = route.component;
+                    return <RouteComponent navigator={navigator}/>
+                }}
+            />
+        );
+    }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 AppRegistry.registerComponent('ReactNativeStudy', () => ReactNativeStudy);

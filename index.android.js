@@ -1,53 +1,39 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
+    AppRegistry,
+    Navigator
 } from 'react-native';
 
+import MyScene from './components/my.scene'
+
+import ViewText from './components/my.view.text'
+
 export default class ReactNativeStudy extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
-  }
+    render() {
+        return (
+            <Navigator initialRoute={{title:'My Initial Scene', index:0}}
+                       renderScene={(route, navigator) => {
+                return <MyScene title={route.title} onForward={() => {
+                    const nextIndex = route.index + 1;
+                    navigator.push({
+                        title: `Scene ${nextIndex}`,
+                        index: nextIndex
+                    })
+                }} onBackward={()=>{
+                    if(route.index > 0){
+                        navigator.pop();
+                    }
+                }} goToWhere={() => {
+                    let allRoutes = navigator.getCurrentRoutes();
+                    var nextIndex = Math.floor(Math.random()*allRoutes.length);
+                    console.log(nextIndex,allRoutes[nextIndex]);
+                    navigator.jumpTo(allRoutes[nextIndex])
+                }}/>
+            }}
+            />
+        );
+    }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 AppRegistry.registerComponent('ReactNativeStudy', () => ReactNativeStudy);
