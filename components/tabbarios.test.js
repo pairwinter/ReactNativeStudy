@@ -48,7 +48,7 @@ export default class TestTabBarIOS extends Component{
                     onPress={()=> {this.setState({selectedTab: TABS.ORDERS})}}
                     badge={this.state.ordersCount>0 ? this.state.ordersCount : undefined}>
 
-                    <View style={{flex:1, backgroundColor:'#ccc', justifyContent:'center'}}>
+                    <View style={{flex:1, backgroundColor:'#ccc', justifyContent:'center', alignItems:'center'}}>
                         <Text onPress={()=>{this.setState({ordersCount: --this.state.ordersCount})}}>{TABS.ORDERS}</Text>
                     </View>
 
@@ -61,7 +61,7 @@ export default class TestTabBarIOS extends Component{
                     selected={this.state.selectedTab === TABS.HISTORY}
                     onPress={()=>{this.setState({selectedTab:TABS.HISTORY})}}>
 
-                    <View style={{flex:1, backgroundColor:'#ccc', justifyContent:'center'}}>
+                    <View style={{flex:1, backgroundColor:'#ccc', justifyContent:'center', alignItems:'center'}}>
                         <Text>{TABS.HISTORY}</Text>
                     </View>
 
@@ -74,7 +74,7 @@ export default class TestTabBarIOS extends Component{
                     selected={this.state.selectedTab === TABS.REPERTORY}
                     onPress={()=>{this.setState({selectedTab:TABS.REPERTORY})}}>
 
-                    <View style={{flex:1, backgroundColor:'#ccc', justifyContent:'center'}}>
+                    <View style={{flex:1, backgroundColor:'#ccc', justifyContent:'center', alignItems:'center'}}>
                         <Text>{TABS.REPERTORY}</Text>
                     </View>
 
