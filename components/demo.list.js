@@ -9,6 +9,7 @@ import TestTextInput from './textinput.test';
 import TestTabBarIOS from './tabbarios.test';
 import TestImage from './image.test';
 import TestScrollableTabView from './scrollable.tab.view.test';
+import TestAnimated from './animated.test';
 
 
 const style = StyleSheet.create({
@@ -57,6 +58,11 @@ export default class RNDemoList extends Component{
                     id: 4,
                     name: 'TestScrollableTabView',
                     component: TestScrollableTabView
+                },
+                {
+                    id: 5,
+                    name: 'TestAnimated',
+                    component: TestAnimated
                 }
 
             ])

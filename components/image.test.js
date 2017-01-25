@@ -7,7 +7,11 @@ import {
     View,
     Image,
     Text
-} from 'react-native'
+} from 'react-native';
+
+import Dimensions from 'Dimensions';
+
+let {width, height} = Dimensions.get('window');
 
 export default class TestImage extends Component{
 
@@ -23,8 +27,8 @@ export default class TestImage extends Component{
     render(){
         return (
             <View style={{flex: 1, justifyContent:'center', alignItems:'center'}}>
-                <Image source={require('../images/bear.png')}/>
-                <Image source={require('../images/bear.png')}>
+                <Image source={require('../images/bear.png')} style={{flex: 1, width: width}}/>
+                <Image source={require('../images/bear.png')} style={{flex: 1, width: width}}>
                     <Text style={{backgroundColor: 'transparent'}}>Background Image</Text>
                     <Text style={{backgroundColor: 'transparent'}}>Background Image</Text>
                 </Image>
